@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <!-- LANCHE_INGREDIENTE -->
+    <changeSet id="1" author="henrique.olivera">
+        <createTable tableName="lanche_ingrediente">
+            <column name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lanche_id" type="bigint"/>
+            <column name="ingrediente_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="henrique.olivera">
+        <addPrimaryKey tableName="lanche_ingrediente" columnNames="id" constraintName="pk_lanche_ingrediente"/>
+    </changeSet>
+
+    <changeSet id="3" author="henrique.olivera">
+        <addAutoIncrement tableName="lanche_ingrediente" columnName="id" columnDataType="bigint"/>
+    </changeSet>
+
+    <changeSet id="4" author="henrique.olivera">
+        <addForeignKeyConstraint constraintName="fk_lanche_ingrediente_lanche"
+                                 baseTableName="lanche_ingrediente" baseColumnNames="lanche_id"
+                                 referencedTableName="lanche" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="5" author="henrique.olivera">
+        <addForeignKeyConstraint constraintName="fk_lanche_ingrediente_ingrediente"
+                                 baseTableName="lanche_ingrediente" baseColumnNames="ingrediente_id"
+                                 referencedTableName="ingrediente" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="6" author="henrique.olivera">
+
+        <!-- X-BACON -->
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="1"/>
+            <column name="lanche_id" value="1"/>
+            <column name="ingrediente_id" value="2"/>
+        </insert>
+
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="2"/>
+            <column name="lanche_id" value="1"/>
+            <column name="ingrediente_id" value="3"/>
+        </insert>
+
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="3"/>
+            <column name="lanche_id" value="1"/>
+            <column name="ingrediente_id" value="5"/>
+        </insert>
+
+        <!-- X-BURGER -->
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="4"/>
+            <column name="lanche_id" value="2"/>
+            <column name="ingrediente_id" value="3"/>
+        </insert>
+
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="5"/>
+            <column name="lanche_id" value="2"/>
+            <column name="ingrediente_id" value="5"/>
+        </insert>
+
+        <!-- X-EGG -->
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="6"/>
+            <column name="lanche_id" value="3"/>
+            <column name="ingrediente_id" value="3"/>
+        </insert>
+
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="7"/>
+            <column name="lanche_id" value="3"/>
+            <column name="ingrediente_id" value="4"/>
+        </insert>
+
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="8"/>
+            <column name="lanche_id" value="3"/>
+            <column name="ingrediente_id" value="5"/>
+        </insert>
+
+        <!-- X-EGG BACON -->
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="9"/>
+            <column name="lanche_id" value="4"/>
+            <column name="ingrediente_id" value="2"/>
+        </insert>
+
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="10"/>
+            <column name="lanche_id" value="4"/>
+            <column name="ingrediente_id" value="3"/>
+        </insert>
+
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="11"/>
+            <column name="lanche_id" value="4"/>
+            <column name="ingrediente_id" value="4"/>
+        </insert>
+
+        <insert tableName="lanche_ingrediente">
+            <column name="id" value="12"/>
+            <column name="lanche_id" value="4"/>
+            <column name="ingrediente_id" value="5"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

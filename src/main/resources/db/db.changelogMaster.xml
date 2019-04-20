@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="/db/changelog/001-usuario.xml"/>
+    <include file="/db/changelog/002-ingrediente.xml"/>
+    <include file="/db/changelog/003-lanche.xml"/>
+    <include file="/db/changelog/004-lanche-ingrediente.xml"/>
+    <include file="/db/changelog/005-cardapio.xml"/>
+    <include file="/db/changelog/006-cardapio-lanche.xml"/>
+    <include file="/db/changelog/007-pedido.xml"/>
+    <include file="/db/changelog/008-pedido-lanche.xml"/>
+    <include file="/db/changelog/009-pedido-lanche-ingrediente.xml"/>
+    <include file="/db/changelog/010-promocao.xml"/>
+    <include file="/db/changelog/011-promocao-pedido-lanche.xml"/>
+    <include file="/db/changelog/012-regras-ingredientes-in-not-in.xml"/>
+    <include file="/db/changelog/013-regras-ingredientes-much.xml"/>
+</databaseChangeLog>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <!-- REGRAS INGREDIENTES IN NOT IN -->
+    <changeSet id="1" author="henrique.olivera">
+        <createTable tableName="regra_ingrediente_in_not_in">
+            <column name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="promocao_id" type="bigint"/>
+            <column name="ingrediente_in_id" type="bigint"/>
+            <column name="ingrediente_not_in_id" type="bigint"/>
+            <column name="porcentagem_desconto" type="decimal(10,1)"/>
+            <column name="data_hora_cadastro" type="datetime" defaultValueDate="current_timestamp"/>
+            <column name="data_hora_atualizacao" type="datetime" defaultValueDate="current_timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="henrique.olivera">
+        <addPrimaryKey tableName="regra_ingrediente_in_not_in" columnNames="id" constraintName="pk_regra_ingrediente_in_not_in"/>
+    </changeSet>
+
+    <changeSet id="3" author="henrique.olivera">
+        <addAutoIncrement tableName="regra_ingrediente_in_not_in" columnName="id" columnDataType="bigint"/>
+    </changeSet>
+
+    <changeSet id="4" author="henrique.olivera">
+        <addForeignKeyConstraint constraintName="fk_regra_ingrediente_in_not_in_regra"
+                                 baseTableName="regra_ingrediente_in_not_in" baseColumnNames="promocao_id"
+                                 referencedTableName="promocao" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="5" author="henrique.olivera">
+        <addForeignKeyConstraint constraintName="fk_regra_ingrediente_in_not_in_ingrediente"
+                                 baseTableName="regra_ingrediente_in_not_in" baseColumnNames="ingrediente_in_id"
+                                 referencedTableName="ingrediente" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="6" author="henrique.olivera">
+        <addForeignKeyConstraint constraintName="fk_regra_ingrediente_in_not__not_in_ingrediente"
+                                 baseTableName="regra_ingrediente_in_not_in" baseColumnNames="ingrediente_not_in_id"
+                                 referencedTableName="ingrediente" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="7" author="henrique.olivera">
+
+        <!-- In Not In -->
+        <insert tableName="regra_ingrediente_in_not_in">
+            <column name="id" value="1"/>
+            <column name="promocao_id" value="1"/>
+            <column name="ingrediente_in_id" value="1"/>
+            <column name="ingrediente_not_in_id" value="2"/>
+            <column name="porcentagem_desconto" value="0.10"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

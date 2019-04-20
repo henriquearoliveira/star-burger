@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <!-- PROMOÇÃO -->
+    <changeSet id="1" author="henrique.olivera">
+        <createTable tableName="promocao">
+            <column name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="varchar(200)"/>
+            <column name="data_hora_cadastro" type="datetime" defaultValueDate="current_timestamp"/>
+            <column name="data_hora_atualizacao" type="datetime" defaultValueDate="current_timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="henrique.olivera">
+        <addPrimaryKey tableName="promocao" columnNames="id" constraintName="pk_promocao"/>
+    </changeSet>
+
+    <changeSet id="3" author="henrique.olivera">
+        <addAutoIncrement tableName="promocao" columnName="id" columnDataType="bigint"/>
+    </changeSet>
+
+    <changeSet id="4" author="henrique.olivera">
+
+        <!-- In Not In -->
+        <insert tableName="promocao">
+            <column name="id" value="1"/>
+            <column name="descricao" value="Alface sem bacon"/>
+        </insert>
+
+        <!-- Much Hamburguer -->
+        <insert tableName="promocao">
+            <column name="id" value="2"/>
+            <column name="descricao" value="Mais Hamburguer"/>
+        </insert>
+
+        <!-- Much Queijo -->
+        <insert tableName="promocao">
+            <column name="id" value="3"/>
+            <column name="descricao" value="Mais Queijo"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

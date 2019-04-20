@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <!-- PROMOCAO PEDIDO LANCHE -->
+    <changeSet id="1" author="henrique.olivera">
+        <createTable tableName="promocao_pedido_lanche">
+            <column name="id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="promocao_id" type="bigint"/>
+            <column name="pedido_lanche_id" type="bigint"/>
+            <column name="data_hora_cadastro" type="datetime" defaultValueDate="current_timestamp"/>
+            <column name="data_hora_atualizacao" type="datetime" defaultValueDate="current_timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="henrique.olivera">
+        <addPrimaryKey tableName="promocao_pedido_lanche" columnNames="id" constraintName="pk_promocao_pedido_lanche"/>
+    </changeSet>
+
+    <changeSet id="3" author="henrique.olivera">
+        <addAutoIncrement tableName="promocao_pedido_lanche" columnName="id" columnDataType="bigint"/>
+    </changeSet>
+
+    <changeSet id="4" author="henrique.olivera">
+        <addForeignKeyConstraint constraintName="fk_promocao_pedido_lanche_promocao"
+                                 baseTableName="promocao_pedido_lanche" baseColumnNames="promocao_id"
+                                 referencedTableName="promocao" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="5" author="henrique.olivera">
+        <addForeignKeyConstraint constraintName="fk_promocao_pedido_lanche_pedido_lanche"
+                                 baseTableName="promocao_pedido_lanche" baseColumnNames="pedido_lanche_id"
+                                 referencedTableName="pedido_lanche" referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
