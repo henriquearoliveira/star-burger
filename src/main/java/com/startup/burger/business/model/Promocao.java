@@ -18,6 +18,8 @@ public class Promocao extends BeanIdentificavel {
     private String descricao;
 
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_regra")
     private TipoRegra tipoRegra;
 
 //    @ManyToMany()

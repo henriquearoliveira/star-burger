@@ -34,10 +34,14 @@ public class MuchPromocao implements IPromocao {
 
         ingredientesPromo.forEach(inP -> {
             ingredientes.forEach(ing -> {
-                if (inP.equals(ing)) {
-                    desconto = desconto.add(ing.getValor()
-                            .multiply(new BigDecimal(String.valueOf(ing.getQuantidade() == 0 ? 1 : ing.getQuantidade())))
-                            .multiply(new BigDecimal("0.33")).setScale(0, BigDecimal.ROUND_HALF_UP));
+                if (inP.getId() == null || ing.getId() == null) {
+                    // exception
+                } else if (ing.getQuantidade() >= inP.getQuantidade()) {
+                    if (inP.getId().equals(ing.getId())) {
+                        desconto = desconto.add(ing.getValor()
+                                .multiply(new BigDecimal(String.valueOf(ing.getQuantidade() == 0 ? 1 : ing.getQuantidade())))
+                                .divide(new BigDecimal("3"), BigDecimal.ROUND_HALF_UP));
+                    }
                 }
             });
         });

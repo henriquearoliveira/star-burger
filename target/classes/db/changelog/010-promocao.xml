@@ -12,6 +12,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="descricao" type="varchar(200)"/>
+            <column name="tipo_regra" type="varchar(10)"/>
             <column name="data_hora_cadastro" type="datetime" defaultValueDate="current_timestamp"/>
             <column name="data_hora_atualizacao" type="datetime" defaultValueDate="current_timestamp"/>
         </createTable>
@@ -31,18 +32,21 @@
         <insert tableName="promocao">
             <column name="id" value="1"/>
             <column name="descricao" value="Alface sem bacon"/>
+            <column name="tipo_regra" value="IN_NOT_IN"/>
         </insert>
 
         <!-- Much Hamburguer -->
         <insert tableName="promocao">
             <column name="id" value="2"/>
             <column name="descricao" value="Mais Hamburguer"/>
+            <column name="tipo_regra" value="MUCH_MORE"/>
         </insert>
 
         <!-- Much Queijo -->
         <insert tableName="promocao">
             <column name="id" value="3"/>
             <column name="descricao" value="Mais Queijo"/>
+            <column name="tipo_regra" value="MUCH_MORE"/>
         </insert>
 
     </changeSet>

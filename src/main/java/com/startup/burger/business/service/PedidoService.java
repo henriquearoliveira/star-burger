@@ -14,11 +14,16 @@ import java.util.List;
 @Service
 public class PedidoService extends ServiceAbstract<Pedido, PedidoRepository> {
 
-    @Autowired
     private LightPromocao lightPromocao;
+    private MuchPromocao muchPromocao;
+    private LancheService lancheService;
 
     @Autowired
-    private MuchPromocao muchPromocao;
+    public PedidoService(MuchPromocao muchPromocao, LightPromocao lightPromocao, LancheService lancheService) {
+        this.muchPromocao = muchPromocao;
+        this.lightPromocao = lightPromocao;
+        this.lancheService = lancheService;
+    }
 
     public Pedido create(PedidoDTO pedidoDTO) {
 
